@@ -19,7 +19,10 @@ flush(stderr()); flush(stdout())
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), 
+           parent=tree)
 
 root<-getNodeSet(tree, "/xmcda:XMCDA")
 
@@ -46,7 +49,10 @@ flush(stderr()); flush(stdout())
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), 
+           parent=tree)
 
 root<-getNodeSet(tree, "/xmcda:XMCDA")
 
@@ -67,7 +73,9 @@ newXMLNode("real", "0.5", parent=value, namespace=c())
 alternativesIDs <- c("a01","a02")
 criteriaIDs <- c("g1","g2")
 
-performance.table<-matrix(nrow=length(alternativesIDs),ncol=length(criteriaIDs),dimnames = list(alternativesIDs,criteriaIDs))
+performance.table<-matrix(nrow=length(alternativesIDs),
+                          ncol=length(criteriaIDs),
+                          dimnames = list(alternativesIDs,criteriaIDs))
 
 for (i in 1:length(alternativesIDs)){
   for (j in 1:length(criteriaIDs)){
@@ -96,7 +104,10 @@ flush(stderr()); flush(stdout())
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), 
+           parent=tree)
 
 root<-getNodeSet(tree, "/xmcda:XMCDA")
 
@@ -137,15 +148,23 @@ flush(stderr()); flush(stdout())
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.0.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.0.0"), 
+           parent=tree)
 
 root<-getNodeSet(tree, "/xmcda:XMCDA")
 
-alternatives<-newXMLNode("alternatives", attrs=c(mcdaConcept="actions"), parent=root[[1]], namespace=c())
+alternatives<-newXMLNode("alternatives", attrs=c(mcdaConcept="actions"), 
+                         parent=root[[1]], 
+                         namespace=c())
 
-alternative<-newXMLNode("alternative",attrs = c(id="x1"), parent=alternatives, namespace=c())
-alternative<-newXMLNode("alternative",attrs = c(id="x2"), parent=alternatives, namespace=c())
-alternative<-newXMLNode("alternative",attrs = c(id="x3"), parent=alternatives, namespace=c())
+alternative<-newXMLNode("alternative",attrs = c(id="x1"), 
+                        parent=alternatives, namespace=c())
+alternative<-newXMLNode("alternative",attrs = c(id="x2"), 
+                        parent=alternatives, namespace=c())
+alternative<-newXMLNode("alternative",attrs = c(id="x3"), 
+                        parent=alternatives, namespace=c())
 
 y<-getNodeSet(tree,"//alternatives")
 
@@ -166,11 +185,15 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-tree <- xmlTreeParse(system.file("extdata","testFile.xml",package="RXMCDA"), useInternalNodes=TRUE)
+tree <- xmlTreeParse(system.file("extdata",
+                                 "testFile.xml",
+                                 package="RXMCDA"), 
+                     useInternalNodes=TRUE)
 
 altIDs <- getAlternativesIDs(tree)
 
-altVals <- getAlternativesIntervalValues(tree, altIDs[[1]], mcdaConcept="alternativesIntervalValues")
+altVals <- getAlternativesIntervalValues(tree, altIDs[[1]], 
+                                         mcdaConcept="alternativesIntervalValues")
 
 
 
@@ -187,7 +210,10 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-tree <- xmlTreeParse(system.file("extdata","testFile.xml",package="RXMCDA"), useInternalNodes=TRUE)
+tree <- xmlTreeParse(system.file("extdata",
+                                 "testFile.xml",
+                                 package="RXMCDA"),
+                     useInternalNodes=TRUE)
 
 altIDs <- getAlternativesIDs(tree)
 
@@ -208,7 +234,10 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-tree <- xmlTreeParse(system.file("extdata","testFile.xml",package="RXMCDA"), useInternalNodes=TRUE)
+tree <- xmlTreeParse(system.file("extdata",
+                                 "testFile.xml",
+                                 package="RXMCDA"), 
+                     useInternalNodes=TRUE)
 
 critIDs <- getCriteriaIDs(tree)
 
@@ -229,7 +258,10 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-tree <- xmlTreeParse(system.file("extdata","testFile.xml",package="RXMCDA"), useInternalNodes=TRUE)
+tree <- xmlTreeParse(system.file("extdata",
+                                 "testFile.xml",
+                                 package="RXMCDA"),
+                     useInternalNodes=TRUE)
 
 critIDs <- getCriteriaIDs(tree)
 
@@ -252,7 +284,10 @@ flush(stderr()); flush(stdout())
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.0.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.0.0"), 
+           parent=tree)
 
 root<-getNodeSet(tree, "/xmcda:XMCDA")
 
@@ -281,7 +316,10 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-tree <- xmlTreeParse(system.file("extdata","testFile.xml",package="RXMCDA"), useInternalNodes=TRUE)
+tree <- xmlTreeParse(system.file("extdata",
+                                 "testFile.xml",
+                                 package="RXMCDA"), 
+                     useInternalNodes=TRUE)
 
 critIDs <- getCriteriaIDs(tree)
 
@@ -303,7 +341,10 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-tree <- xmlTreeParse(system.file("extdata","testFile.xml",package="RXMCDA"), useInternalNodes=TRUE)
+tree <- xmlTreeParse(system.file("extdata",
+                                 "testFile.xml",
+                                 package="RXMCDA"), 
+                     useInternalNodes=TRUE)
 
 critIDs <- getCriteriaIDs(tree)
 
@@ -324,11 +365,15 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-tree <- xmlTreeParse(system.file("extdata","testFile.xml",package="RXMCDA"), useInternalNodes=TRUE)
+tree <- xmlTreeParse(system.file("extdata",
+                                 "testFile.xml",
+                                 package="RXMCDA"), 
+                     useInternalNodes=TRUE)
 
 critIDs <- getCriteriaIDs(tree)
 
-pairsVals <- getCriteriaPairsIntervalValues(tree, critIDs[[1]],mcdaConcept="interactionIntervals")
+pairsVals <- getCriteriaPairsIntervalValues(tree, critIDs[[1]],
+                                            mcdaConcept="interactionIntervals")
 
 
 
@@ -345,11 +390,15 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-tree <- xmlTreeParse(system.file("extdata","testFile.xml",package="RXMCDA"), useInternalNodes=TRUE)
+tree <- xmlTreeParse(system.file("extdata",
+                                 "testFile.xml",
+                                 package="RXMCDA"), 
+                     useInternalNodes=TRUE)
 
 critIDs <- getCriteriaIDs(tree)
 
-pairsVals <- getCriteriaPairsValues(tree, critIDs[[1]],mcdaConcept="interactionValues")
+pairsVals <- getCriteriaPairsValues(tree, critIDs[[1]],
+                                          mcdaConcept="interactionValues")
 
 
 
@@ -366,7 +415,10 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-tree <- xmlTreeParse(system.file("extdata","testFile.xml",package="RXMCDA"), useInternalNodes=TRUE)
+tree <- xmlTreeParse(system.file("extdata",
+                                 "testFile.xml",
+                                 package="RXMCDA"), 
+                     useInternalNodes=TRUE)
 
 critIDs <- getCriteriaIDs(tree)
 
@@ -387,11 +439,15 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-tree <- xmlTreeParse(system.file("extdata","testFile.xml",package="RXMCDA"), useInternalNodes=TRUE)
+tree <- xmlTreeParse(system.file("extdata",
+                                 "testFile.xml",
+                                 package="RXMCDA"),
+                     useInternalNodes=TRUE)
 
 critIDs <- getCriteriaIDs(tree)
 
-capa <- getMobiusCapacities(tree, critIDs[[1]], 5, 5, mcdaConcept="mobiusCapacity")
+capa <- getMobiusCapacities(tree, critIDs[[1]], 5, 5,
+                            mcdaConcept="mobiusCapacity")
 
 
 
@@ -410,7 +466,10 @@ flush(stderr()); flush(stdout())
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.0.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.0.0"), 
+           parent=tree)
 
 root<-getNodeSet(tree, "/xmcda:XMCDA")
 
@@ -441,13 +500,17 @@ flush(stderr()); flush(stdout())
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.0.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.0.0"), 
+           parent=tree)
 
 root<-getNodeSet(tree, "/xmcda:XMCDA")
 
 criteria<-newXMLNode("criteria", parent=root[[1]], namespace=c())
 
-criterion<-newXMLNode("criterion",attrs = c(id="g1"), parent=criteria, namespace=c())
+criterion<-newXMLNode("criterion",attrs = c(id="g1"),
+                      parent=criteria, namespace=c())
 
 y<-getNodeSet(tree,"//criteria")
 
@@ -470,7 +533,10 @@ flush(stderr()); flush(stdout())
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.0.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.0.0"), 
+           parent=tree)
 
 root<-getNodeSet(tree, "/xmcda:XMCDA")
 
@@ -499,13 +565,17 @@ flush(stderr()); flush(stdout())
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.0.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.0.0"), 
+           parent=tree)
 
 root<-getNodeSet(tree, "/xmcda:XMCDA")
 
 parameters<-newXMLNode("methodParameters", parent=root[[1]], namespace=c())
 
-parameter <- newXMLNode("parameter",attrs = c(name="numIt"), parent=parameters, namespace=c())
+parameter <- newXMLNode("parameter",attrs = c(name="numIt"), 
+                        parent=parameters, namespace=c())
 
 value <- newXMLNode("value", parent=parameter, namespace=c())
 
@@ -530,7 +600,8 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-tree <- xmlTreeParse(system.file("extdata","testFile.xml",package="RXMCDA"), useInternalNodes=TRUE)
+tree <- xmlTreeParse(system.file("extdata","testFile.xml",package="RXMCDA"), 
+                     useInternalNodes=TRUE)
 
 tables <- getPerformanceTables(tree)
 
@@ -553,7 +624,10 @@ altID <- c("x")
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), 
+           parent=tree)
 
 putAlternativeValue(tree,0.8,alternativesIDs = altID)
 
@@ -574,7 +648,10 @@ flush(stderr()); flush(stdout())
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), 
+           parent=tree)
 
 comps <- rbind(c("x", "y", "0.07"), c("y", "z", "0.01"))
 
@@ -603,7 +680,10 @@ altVals <- rbind(c(1,1),c(2,0.5),c(3,0.2))
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), 
+           parent=tree)
 
 putAlternativesValues(tree,altVals,altIDs)
 
@@ -628,7 +708,10 @@ library(kappalab)
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), 
+           parent=tree)
 
 mu<-capacity(0:15)
 
@@ -655,7 +738,10 @@ flush(stderr()); flush(stdout())
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), 
+           parent=tree)
 
 critIDs <- c("g1","g2","g3","g4")
 
@@ -684,7 +770,10 @@ critVals <- rbind(c(1,1),c(2,0.5),c(3,0.2))
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), 
+           parent=tree)
 
 putCriteriaValues(tree,critVals,critIDs)
 
@@ -707,7 +796,10 @@ critID <- c("x")
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), 
+           parent=tree)
 
 putCriterionValue(tree,0.8,criteriaIDs = critID)
 
@@ -734,7 +826,10 @@ colnames(performanceTable) <- c("g1","g2","g3")
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), 
+           parent=tree)
 
 putPerformanceTable(tree,performanceTable)
 
@@ -755,7 +850,10 @@ flush(stderr()); flush(stdout())
 
 tree = newXMLDoc()
 
-newXMLNode("xmcda:XMCDA", namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), parent=tree)
+newXMLNode("xmcda:XMCDA", 
+           namespace = c("xsi" = "http://www.w3.org/2001/XMLSchema-instance", 
+           "xmcda" = "http://www.decision-deck.org/2009/XMCDA-2.1.0"), 
+           parent=tree)
 
 x<-list()
 x<-c(x,list(g1=rbind(c(1,2),c(3,4))))
