@@ -1,9 +1,12 @@
 351afb03c3e2ab9283dd3e251358405f *COPYING
-1efd5a6d2740b44c257c2c8910f00f10 *DESCRIPTION
+5aa3ad210ce9b2f036ee934e81d9ce97 *DESCRIPTION
 84055e98126a16214e11f567899a5e05 *NAMESPACE
-e5fc1400646394091838d2edfa5073a0 *R/libxmcda.R
+85c29bf0558360eb3d2942710a40f8ad *R/libxmcda.R
 c08008f2d7c55866f41efbc1b4976543 *README
+81bfa5417448283ccd5a8da65765a1b8 *RXMCDA-Ex.R
+9db0a1d676da9bd928e1b25d5c7f4d22 *inst/extdata/XMCDA-2.0.0.xsd
 022efcde08cfc86d8a3b2bd03a29af39 *inst/extdata/XMCDA-2.1.0.xsd
+06d5f10a48e44decbca2fcf409b21f40 *inst/extdata/XMCDA-2.2.0.xsd
 c8e3ed4f76cc3fe11e847b660ac0d5cc *inst/extdata/testFile.xml
 c4b98106f2f8bcd3179e577d00cea80e *man/checkXSD.Rd
 d76029c8181e89f872504d36d5983878 *man/getAlternativesComparisons.Rd
@@ -39,7 +42,7 @@ a5a3ebc3d7152c57cb0b064c7420f7de *man/putErrorMessage.Rd
 841b53b5238f1f9150d7b11ab6c46e79 *man/putMessage.Rd
 0360b1dca8daf8db0e9213771d8314be *man/putPerformanceTable.Rd
 b20b1388ece55ce1eccd03367af22e8a *man/putPointsCriterionFunction.Rd
-c9135a9e2d0ca0939af1cd808719fb41 *tests/checkXSD.R
+114c1551a114e9605457589a4aa3b959 *tests/checkXSD.R
 2649e932eb1a7f1cd97a2a06d938560c *tests/getAlternativesComparisons.R
 4a99db7b2de65426be5c585ffd2c2027 *tests/getAlternativesComparisonsLabels.R
 44d45a95e9dd17500bdceba1036a028f *tests/getAlternativesIDs.R

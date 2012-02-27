@@ -1,6 +1,6 @@
 Package: RXMCDA
-Version: 1.4.2
-Date: 2012-04-09
+Version: 1.4.3
+Date: 2012-02-27
 Title: RXMCDA
 Author: Patrick Meyer, Sebastien Bigaret.
 Maintainer: Patrick Meyer <patrick.meyer@telecom-bretagne.eu>
@@ -14,6 +14,7 @@ Suggests: kappalab
 Encoding: latin1
 License: CeCILL-2
 URL: http://www.decision-deck.org/xmcda
-Packaged: 2012-04-09 11:05:19 UTC; pat
+Packaged: 2013-02-27 12:49:21 UTC; pat
+NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2012-04-09 11:47:53
+Date/Publication: 2013-02-27 14:13:20
