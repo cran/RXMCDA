@@ -1,9 +1,8 @@
 351afb03c3e2ab9283dd3e251358405f *COPYING
-9a94459c18e8c80b1fd57220fa0b217a *DESCRIPTION
+1efd5a6d2740b44c257c2c8910f00f10 *DESCRIPTION
 84055e98126a16214e11f567899a5e05 *NAMESPACE
-8df632d1b484fa665150dbbe4cd0a905 *R/libxmcda.R
+e5fc1400646394091838d2edfa5073a0 *R/libxmcda.R
 c08008f2d7c55866f41efbc1b4976543 *README
-81bfa5417448283ccd5a8da65765a1b8 *RXMCDA-Ex.R
 022efcde08cfc86d8a3b2bd03a29af39 *inst/extdata/XMCDA-2.1.0.xsd
 c8e3ed4f76cc3fe11e847b660ac0d5cc *inst/extdata/testFile.xml
 c4b98106f2f8bcd3179e577d00cea80e *man/checkXSD.Rd
@@ -63,7 +62,7 @@ c99a333facc12e569f56551e05a52fce *tests/getNumericValue.R
 44118722af1dc081c95cc8b02db514cc *tests/putAlternativeValue.R
 68e52ec23eea31feecc616e5d9082c43 *tests/putAlternativesComparisonsLabels.R
 6f469e1c54c5ea4bfa247e0986136dcb *tests/putAlternativesValues.R
-d903ed2da9551e60dfa21dd9a61d5e7e *tests/putCapacity.R
+7d866b13bf6b4b15924fba5e791c6e44 *tests/putCapacity.R
 3a32d2cd072f66a2a9b24078f022ca67 *tests/putCriteriaPairsValues.R
 39cb699b79fe98f53820a5535ea7a6bf *tests/putCriteriaValues.R
 ffa12979e4ac4edb9a83a71188901755 *tests/putCriterionValue.R
