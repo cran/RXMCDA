@@ -1,14 +1,13 @@
 351afb03c3e2ab9283dd3e251358405f *COPYING
-6b4760fab3c2f593284cfdbd90a9af04 *DESCRIPTION
+f1dc0b74ed197c865393fd536936cabb *DESCRIPTION
 84055e98126a16214e11f567899a5e05 *NAMESPACE
-85c29bf0558360eb3d2942710a40f8ad *R/libxmcda.R
+a3f53c9a7eb2a68b6eeca7b5a296f510 *R/libxmcda.R
 c08008f2d7c55866f41efbc1b4976543 *README
-33fe3160d8f8f41e461d1345a3fb8ba7 *RXMCDA-Ex.R
 9db0a1d676da9bd928e1b25d5c7f4d22 *inst/extdata/XMCDA-2.0.0.xsd
 022efcde08cfc86d8a3b2bd03a29af39 *inst/extdata/XMCDA-2.1.0.xsd
 06d5f10a48e44decbca2fcf409b21f40 *inst/extdata/XMCDA-2.2.0.xsd
 de6929a059dddbd39f0e33c9e32a0088 *inst/extdata/testFile.xml
-47e5798b377935f8dba45ca201aaea6f *man/checkXSD.Rd
+89db7aec81a8e9302e66635f214c1ce1 *man/checkXSD.Rd
 fdc8e14350338a55807978648be25e45 *man/getAlternativesComparisons.Rd
 52fdc6204a49a81419ca56ec3c884ca9 *man/getAlternativesComparisonsLabels.Rd
 72831d64c97b5cc273d7878675313534 *man/getAlternativesIDs.Rd
