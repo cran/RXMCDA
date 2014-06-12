@@ -46,7 +46,9 @@ export(
        "putCategoriesIntervalValues",
        "getAlternativesAffectations",
        "putAlternativesAffectations",
-       "getAlternativesComparisonsValues"
+       "getAlternativesComparisonsValues",
+       "putAlternativesIDs",
+       "putCriteriaMatrix"
        )
        
 
