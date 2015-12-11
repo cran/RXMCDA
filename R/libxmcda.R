@@ -52,16 +52,17 @@ checkXSD <- function(tree){
   
   # the schema are locally stored
   
-  xsdLocations <- c("http://www.decision-deck.org/2009/XMCDA-2.0.0" = "XMCDA-2.0.0.xsd", "http://www.decision-deck.org/2009/XMCDA-2.1.0" = "XMCDA-2.1.0.xsd", "http://www.decision-deck.org/2012/XMCDA-2.2.0" = "XMCDA-2.2.0.xsd")
+  xsdLocations <- c("http://www.decision-deck.org/2009/XMCDA-2.0.0" = "XMCDA-2.0.0.xsd", 
+                    "http://www.decision-deck.org/2009/XMCDA-2.1.0" = "XMCDA-2.1.0.xsd", 
+                    "http://www.decision-deck.org/2012/XMCDA-2.2.0" = "XMCDA-2.2.0.xsd", 
+                    "http://www.decision-deck.org/2012/XMCDA-2.2.1" = "XMCDA-2.2.1.xsd")
   
   if (!is.na(xsdLocations[namespaces[i[1]]])){
-    
     # xsd <- xmlTreeParse(xsdLocations[namespaces[i[1]]], isSchema =TRUE, useInternalNodes = TRUE)
     xsd <- xmlTreeParse(system.file("extdata",xsdLocations[namespaces[i[1]]],package="RXMCDA"), isSchema =TRUE, useInternalNodes = TRUE)
   }else{
-    
     # xsd <- xmlTreeParse("http://www.decision-deck.org/xmcda/_downloads/XMCDA-2.1.0.xsd", isSchema =TRUE, useInternalNodes = TRUE)
-    xsd <- xmlTreeParse(system.file("extdata","XMCDA-2.2.0.xsd",package="RXMCDA"), isSchema =TRUE, useInternalNodes = TRUE)
+    xsd <- xmlTreeParse(system.file("extdata","XMCDA-2.2.1.xsd",package="RXMCDA"), isSchema =TRUE, useInternalNodes = TRUE)
   }
   
   if (xmlSchemaValidate(xsd,tree)$status != 0)
@@ -405,12 +406,13 @@ getParameters <- function(tree, name = NULL){
         }
         else if (names(xmlChildren(value[[1]]))[1] == "boolean") {
           val <- xmlValue(getNodeSet(value[[1]], "boolean")[[1]])
-          if (!(identical(value,FALSE)||identical(value,TRUE))){
-            # then we have an integer 0 or 1
-            out <- c(out, list(as.integer(val)))
+          if ((val=="true")||(val=="1")) {
+            out <- c(out, TRUE)
+          }
+          else if  ((val=="false")||(val=="0")) {
+            out <- c(out, FALSE)
           } else {
-            # then it is either true or false
-            out <- c(out, list(as.logical(val)))
+            out <- c(out, list(NA))
           }
           names(out)[length(out)] <- toString(xmlGetAttr(options[[i]], "name"))
         }
@@ -2580,8 +2582,7 @@ putAlternativesAffectations <- function (tree, alternativesAffectations,
             upperBound <- newXMLNode("upperBound", parent = interval, namespace = c())
             newXMLNode("categoryID", categoriesIDs[firstTrue], parent = lowerBound, namespace = c())
             newXMLNode("categoryID", categoriesIDs[lastTrue], parent = upperBound, namespace = c())
-          }
-          else {
+          } else {
             categoriesSet <- newXMLNode("categoriesSet", parent = altAffectation, namespace = c())
             for (j in trueIndices) {
               newXMLNode("categoryID", categoriesIDs[j], parent = categoriesSet, namespace = c())
@@ -2590,7 +2591,65 @@ putAlternativesAffectations <- function (tree, alternativesAffectations,
         } 
       })
       if (inherits(tmpErr, "try-error")) {
-        err2 <- "Impossible to put (a) value(s) in a <alternativesValues>."
+        err2 <- "Impossible to put (a) value(s) in a <alternativesAffectations>."
+        break
+      }
+    }
+  }
+  if (!is.null(err1) | (!is.null(err2))) {
+    out <- c(out, list(status = c(err1, err2)))
+  }
+  else {
+    out <- c(out, list(status = "OK"))
+  }
+  return(out)
+}
+
+putAlternativesAffectationsWithValues <- function (tree, alternativesAffectations, 
+                                         alternativesIDs, categoriesIDs,
+                                         mcdaConcept = NULL) {
+  out <- list()
+  err1 <- NULL
+  err2 <- NULL
+  root <- NULL
+  tmpErr <- try({
+    root <- xmlRoot(tree)
+  })
+  if (inherits(tmpErr, "try-error")) {
+    err1 <- "No <xmcda:XMCDA> found."
+  }
+  if (length(root) != 0) {
+    if (!is.null(mcdaConcept)) {
+      alternativesAffectationsNode <- newXMLNode("alternativesAffectations",
+                                                 attrs = c(mcdaConcept = mcdaConcept), 
+                                                 parent = root,
+                                                 namespace = c())
+    }
+    else {
+      alternativesAffectationsNode <- newXMLNode("alternativesAffectations",
+                                                 parent = root,
+                                                 namespace = c())
+    }
+    
+    for (i in 1:nrow(alternativesAffectations)) {
+      alternativeIndex <- alternativesAffectations[i, 1]
+      categoryIndex <- alternativesAffectations[i, 2]
+      value <- alternativesAffectations[i, 3]
+      
+      tmpErr <- try({
+        altAffectation <- newXMLNode("alternativeAffectation",
+                                     parent = alternativesAffectationsNode,
+                                     namespace = c())
+        newXMLNode("alternativeID", alternativesIDs[alternativeIndex],
+                   parent = altAffectation, namespace = c())
+        newXMLNode("categoryID", categoriesIDs[categoryIndex],
+                   parent = altAffectation, namespace = c())
+        valueNode <- newXMLNode("value", parent = altAffectation, namespace = c())
+        newXMLNode("real", value, parent = valueNode, namespace = c())
+      })
+      if (inherits(tmpErr, "try-error")) {
+        err2 <- "Impossible to put (a) value(s) in a <alternativesAffectations>."
+        break
       }
     }
   }
@@ -2633,11 +2692,20 @@ putCategoriesValues <- function (tree, categoriesValues, categoriesIDs,
                                       namespace = c())
           newXMLNode("categoryID", categoriesIDs[categoriesValues[i, 1]],
                      parent = categoryValue, namespace = c())
-          value <- newXMLNode("value", parent = categoryValue, namespace = c())
-          newXMLNode("real", categoriesValues[i, 2], parent = value, namespace=c())
+          if (ncol(categoriesValues) == 2) {
+            value <- newXMLNode("value", parent = categoryValue, namespace = c())
+            newXMLNode("real", categoriesValues[i, 2], parent = value, namespace = c())
+          } else if (ncol(categoriesValues) > 2) {
+            values <- newXMLNode("values", parent = categoryValue, namespace = c())
+
+            for (j in seq(2, ncol(categoriesValues))) {
+              value <- newXMLNode("value", parent = values, namespace = c())
+              newXMLNode("real", categoriesValues[i, j], parent = value, namespace = c())
+            }
+          }
         })
         if (inherits(tmpErr, "try-error")) {
-          err2 <- "Impossible to put (a) value(s) in a <alternativesValues>."
+          err2 <- "Impossible to put (a) value(s) in a <categoriesValues>."
         }
       }
     }
